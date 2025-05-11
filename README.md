@@ -84,17 +84,17 @@ AI-CHATBOT_ASSISTANT/
    
     - [🔗 GitHub Repository](https://github.com/Jatin-35/AI-ChatBot-Voice-Assistant-.git)
       
-    - cd AI-ChatBot-Voice-Assistant
+    - **cd** AI-ChatBot-Voice-Assistant
 
 2. Create a virtual environment
 
-    - python -m venv venv
+    - **python** -m venv venv
    
-    - source venv/bin/activate  # or `venv\Scripts\activate` on Windows
+    - **source** venv/bin/activate  # or `venv\Scripts\activate` on Windows
    
 3. Install dependencies
 
-    - pip install -r requirements.txt
+    - **pip** install -r requirements.txt
 
 4. Set up your API keys
 
@@ -102,11 +102,11 @@ AI-CHATBOT_ASSISTANT/
         - 🔑 [Hugging Face](https://huggingface.co/settings/tokens)
         - 🌐 [Google Cloud](https://console.cloud.google.com/)
           
-    - Place your Hugging Face API key, Google Search API key, etc., in environment variables or config files as per instructions in model.py and generate.py.
+    - Place your Hugging Face API key, Google Search API key, etc., in environment variables or config files as per instructions in Model.py and ImageGeneration.py.
 
-6. Run the assistant
+5. Run the assistant
 
-   - python main.py
+   - **python** Main.py
 
 ---
 
@@ -118,13 +118,13 @@ AI-CHATBOT_ASSISTANT/
 
 - Based on the classification:
 
-    - It responds using LLMs (like ChatGPT-style for general queries),
+    - It responds using **LLMs** (like ChatGPT-style for general queries),
 
     - Fetches live data for real-time queries,
 
     - Executes automation tasks (like opening apps, playing media, etc.)
 
-- It also retains memory across sessions using chatlog.json.
+- It also retains memory across sessions using **Chatlog.json**.
 
 ---
 
@@ -169,5 +169,5 @@ Here are some real-world voice commands you can try with your assistant:
 ---
 
 ## 🤝 Contribute or Hire
- I welcome contributions and ideas. If you have blog suggestions or freelance opportunities, feel free to contact me via the form mentioned in the video or DM on socials.
+ I welcome contributions and ideas. If you have blog suggestions or freelance opportunities, feel free to contact me via DM on socials.
 
