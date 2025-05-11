@@ -19,19 +19,19 @@ It integrates real-time data handling, voice recognition, image generation, and 
 - 🌐 **Real-Time Query Processing**  
   Fetches up-to-date information like current events or stock prices using integrated search APIs.
 
-- 📷 **Image Generation**  
+- 🖼️ **Image Generation**  
   Uses Hugging Face API to generate AI-powered images from user-defined text prompts (e.g., “Tony Stark in a futuristic suit”)
 
 - 💬 **Persistent Chat Memory**  
   Remembers conversations and user-provided data across sessions (like name, age, preferences).
 
-- 🖥 **System Automation**  
+- 🖥️ **System Automation**  
   Executes commands like opening/closing apps, playing music, generating leave letters, etc.
 
 - 🔊 **Text-to-Speech & Custom Voice**  
   Responds using customizable speech output and supports voice selection.
 
-- 🧾 **Threaded Execution**  
+- 🧵 **Threaded Execution**  
   Runs frontend and backend in parallel using threading for seamless interaction.
 
 - 💡 **UI Integration**  
@@ -39,7 +39,7 @@ It integrates real-time data handling, voice recognition, image generation, and 
 
 ---
 
-## 🧾 Project Structure
+## 📁 Project Structure
 ```
 AI-CHATBOT_ASSISTANT/
 ├── .venv/                       # Python virtual environment
@@ -99,8 +99,8 @@ AI-CHATBOT_ASSISTANT/
 4. Set up your API keys
 
     - Get keys from:
-        - [Hugging Face](https://huggingface.co/settings/tokens)
-        - [Google Cloud](https://console.cloud.google.com/)
+        - 🔑 [Hugging Face](https://huggingface.co/settings/tokens)
+        - 🌐 [Google Cloud](https://console.cloud.google.com/)
           
     - Place your Hugging Face API key, Google Search API key, etc., in environment variables or config files as per instructions in model.py and generate.py.
 
@@ -145,7 +145,7 @@ Here are some real-world voice commands you can try with your assistant:
 
 ## 🔄 Version Comparison 
 
-| Version        | Features Added                                     |
+| 🔢 Version     |   ✨ Features Added                               |
 |----------------|----------------------------------------------------|
 | v1.0           | Basic voice interaction, simple automation         |
 | v1.5           | Image generation, chat memory                      |
@@ -154,17 +154,17 @@ Here are some real-world voice commands you can try with your assistant:
 
 ---
 
-## 💡 Future Enhancements
+## 🔮 Future Enhancements
 
-- Personal user profile integration
+- 🎭 Emotion-based tone switching in TTS
 
-- Emotion-based voice tone
+- 🌐 Web dashboard for history, control, and settings
 
-- Support for more languages
+- 🧬 Custom AI model training from user interactions
 
-- Web dashboard
+- 🌍 Multi-language interaction support
 
-- Custom AI model training
+- 🙋 Personal user profiles for adaptive behavior
 
 ---
 
