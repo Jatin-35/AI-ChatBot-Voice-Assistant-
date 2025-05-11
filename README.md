@@ -77,7 +77,8 @@ AI-CHATBOT_ASSISTANT/
 └── Requirements.txt             # Python dependencies list
 ```
 ---
-
+<details>
+  
 🔧 Installation
 
 1. Clone the repository
@@ -171,3 +172,4 @@ Here are some real-world voice commands you can try with your assistant:
 ## 🤝 Contribute or Hire
  I welcome contributions and ideas. If you have blog suggestions or freelance opportunities, feel free to contact me via DM on socials.
 
+</details>
