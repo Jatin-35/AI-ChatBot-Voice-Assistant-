@@ -14,8 +14,16 @@ Assistantname = env_vars.get("Assistantname")
 GroqAPIKey = env_vars.get("GroqAPIKey")
 SerpAPIKey = env_vars.get("SerpAPIKey")
 
-# initialize the Groq client with the provided API Key.
+# Remove the hardcoded API key and use the one from .env
+# GroqAPIKey = "xai-W6krRg3eGC4LpnyV1QfS3L5o0nIIPepmxdSNcs9BD6OHZCjoo3IheZoo3PypwbLJzKjxzDeSaRBMSAn7"
+# env_vars.get("GroqAPIKey")
+
+# Add debug prints to verify API key loading
+#print(f"Loaded Groq API Key: '{GroqAPIKey}' (Length: {len(GroqAPIKey) if GroqAPIKey else 0})")
+
+# Initialize the Groq client with the API Key
 client = Groq(api_key=GroqAPIKey)
+# print(f"Loaded Groq API Key: {GroqAPIKey}")
 
 # Define the system instruction for the Chatbot.
 System = f"""Hello, I am {Username}, You are a very accurate and advanced AI chatbot named {Assistantname} which has real-time up-to-date information from the internet.
@@ -118,15 +126,18 @@ def RealtimeSearchEngine(prompt) :
     SystemChatBot.append({"role" : "system" , "content" : GoogleSearch(prompt)})
     
     # Generate a response using the Groq Client.
-    completion = client.chat.completions.create(
-        model= "llama3-70b-8192",
-        messages= SystemChatBot + [{"role" : "system" , "content" : Information()}] + messages,
-        temperature= 0.7,
-        max_tokens= 2048,
-        top_p=1,
-        stream=True,
-        stop=None
+    try:
+        completion = client.chat.completions.create(
+            model="llama3-70b-8192",
+            messages=SystemChatBot + [{"role": "system", "content": Information()}] + messages,
+            temperature=0.7,
+            max_tokens=2048,
+            top_p=1,
+            stream=True,
+            stop=None
     )
+    except Exception as e:
+        return f"Error while getting response from Groq API: {str(e)}"
     
     Answer = ""
     

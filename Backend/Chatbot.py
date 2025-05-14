@@ -65,53 +65,56 @@ def AnswerModifier(Answer) :
     return modified_answer
 
 # Main ChatBot function to handle user Queries
-def ChatBot(Query) :
-    """ This Function sends the user's query to the chatbot and return AI's Responses. """
-    
-    try :
-        # Load the pexisting chat log from the JSON file.
-        with open(r"Data\ChatLog.json", "r") as f :
+def ChatBot(Query, has_retried=False):
+    """This function sends the user's query to the chatbot and returns AI's response."""
+
+    try:
+        # Load the existing chat log from the JSON file
+        with open(r"Data\ChatLog.json", "r") as f:
             messages = load(f)
-            
-        # Append the user's query to the messages
-        messages.append({"role" : "user" , "content" : f"{Query}"})
-        
-        # Make a request to the Groq API for a response
+
+        # Append the user's query
+        messages.append({"role": "user", "content": f"{Query}"})
+
+        # Make a request to the Groq API
         completion = client.chat.completions.create(
-            model="llama3-70b-8192",  # Specify the model to use.
-            messages= SystemChatBot + [{"role" : "system" , "content" : RealtimeInformation()}] + messages,  # Include System instructions , real-time info, and chat histroy.
-            max_tokens=1024,  # Set or Limit the maximum number of tokens for the response.
-            temperature = 0.7, # Adjust reponse randomness (higher means more random).
-            top_p= 1 , # Use Nucleus Sampling to control diversity.
-            stream = True, # Enable straming response
-            stop = None # Allow the model to determine when to stop
+            model="llama3-8b-8192",
+            messages=SystemChatBot + [{"role": "system", "content": RealtimeInformation()}] + messages,
+            max_tokens=1024,
+            temperature=0.7,
+            top_p=1,
+            stream=True,
+            stop=None
         )
-        
-        Answer = ""  # Initialize an empty string to store the AI's response.
-        
-        # Process the streamed response chunks
-        for chunk in completion :
-            if chunk.choices[0].delta.content :  # Check if there is data in the currrent chunk. 
-                    Answer += chunk.choices[0].delta.content # Append the answer to the content.
-        
-        Answer = Answer.replace("</s>" , "") # Clean up any unwanted tokens from the response.
-        
-        # Append the chatbot's responses to the messages list.
-        messages.append({"role" : "assistant" , "content" : Answer})
-        
-        # Save the updated chat log in JSON file.
-        with open(r"Data\ChatLog.json", "w") as f :
-            dump(messages , f, indent = 4)  
-            
-        # Return the formatted response.
+
+        Answer = ""  # Initialize empty answer
+
+        # Stream the response
+        for chunk in completion:
+            if chunk.choices[0].delta.content:
+                Answer += chunk.choices[0].delta.content
+
+        Answer = Answer.replace("</s>", "")  # Clean up
+
+        # Save the assistant's response
+        messages.append({"role": "assistant", "content": Answer})
+
+        # Update chat log
+        with open(r"Data\ChatLog.json", "w") as f:
+            dump(messages, f, indent=4)
+
         return AnswerModifier(Answer=Answer)
-    
-    except Exception as e :
-        # Handle errors by printing the exception and resetting the chat log.
-        print(f"Error :" , {e})
-        with open(r"Data\ChatLog.json" , "w") as f:
-            dump([] , f , indent=4)
-        return ChatBot(Query) # return the query after resetting the log.
+
+    except Exception as e:
+        print(f"Error: {e}")
+        if not has_retried:
+            # Reset the chat log and retry once
+            with open(r"Data\ChatLog.json", "w") as f:
+                dump([], f, indent=4)
+            return ChatBot(Query, has_retried=True)
+        else:
+            return "Sorry, an internal error occurred. Please try again later."
+
     
 # Main program entry point.
 if __name__ == "__main__" :
