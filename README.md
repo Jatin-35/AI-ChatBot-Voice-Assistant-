@@ -101,7 +101,10 @@ AI-CHATBOT_ASSISTANT/
 
     - Get keys from:
         - 🔑 [Hugging Face](https://huggingface.co/settings/tokens)
+        - 🧬 [Cohere API-Key](https://dashboard.cohere.com/api-keys) 
         - 🌐 [Google Cloud](https://console.cloud.google.com/)
+        - ☁️ [Groq Cloud](https://console.groq.com/keys)
+        - 🔍 [Serp API-Key](https://serpapi.com/manage-api-key)  
           
     - Place your Hugging Face API key, Google Search API key, etc., in environment variables or config files as per instructions in Model.py and ImageGeneration.py.
 
